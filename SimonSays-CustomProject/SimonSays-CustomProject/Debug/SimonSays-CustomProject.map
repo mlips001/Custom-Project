@@ -50,7 +50,7 @@ state               0x1               main.o
 c                   0x2               main.o
 currentValue        0x1               main.o
 a                   0x2               main.o
-Pattern             0x9               main.o
+Pattern             0x4               main.o
 
 Discarded input sections
 
@@ -570,7 +570,7 @@ END GROUP
                 0x008001e0                _edata = .
                 0x008001e0                PROVIDE (__data_end, .)
 
-.bss            0x008001e0       0x2a
+.bss            0x008001e0       0x25
                 0x008001e0                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -608,7 +608,7 @@ END GROUP
                 0x008001f7        0x1 main.o
                 0x008001f7                TimerFlag
  *(COMMON)
- COMMON         0x008001f8       0x12 main.o
+ COMMON         0x008001f8        0xd main.o
                 0x008001f8                b
                 0x008001fa                game_state
                 0x008001fb                state
@@ -616,15 +616,15 @@ END GROUP
                 0x008001fe                currentValue
                 0x008001ff                a
                 0x00800201                Pattern
-                0x0080020a                PROVIDE (__bss_end, .)
+                0x00800205                PROVIDE (__bss_end, .)
                 0x00000c02                __data_load_start = LOADADDR (.data)
                 0x00000ce2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080020a        0x0
+.noinit         0x00800205        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080020a                _end = .
+                0x00800205                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0

@@ -6,7 +6,6 @@
  */ 
 
 #include <avr/io.h>
-//#include <avr/eeprom.h>
 #include "timer.h"
 #include "io.h"
 #include "Randomize.c"
@@ -17,9 +16,6 @@ int16_t j_Ldir = 0x00;
 int16_t j_Rdir = 0x00;
 int16_t j_Udir = 0x00;
 int16_t j_Ddir = 0x00;
-
-//unsigned char EEMEM eeprom_array[10];	
-
 
 // The value for (~PINA & 0x0F) or  (j_Ldir) | (j_Rdir << 1) | (j_Udir << 2) | (j_Ddir << 3);
 unsigned char currentValue;
@@ -38,7 +34,7 @@ void getInput() {
 enum Simon_Says{Wait, Init, Add_LED, Repeat_Order, Get_Input, Get_Next_Input, Lose, Win, Add_Points } game_state;
 
 
-#define MAX_ROUNDS 9
+#define MAX_ROUNDS 4
 // How long to way during playback.
 #define MAX_WAIT_PER_LED 2
 
@@ -276,7 +272,7 @@ int main(void)
 	LCD_init();
 	PWM_on();
 	
-	// Set the seed for the PNR.
+	// Set the seed
 	Initialize(1);				// Use a set seed so it could repeat
 	
 	TimerSet(200);

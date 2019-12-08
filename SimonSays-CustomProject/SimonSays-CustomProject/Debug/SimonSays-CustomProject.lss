@@ -7,7 +7,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00000c02  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000002a  008001e0  008001e0  00000d76  2**0
+  2 .bss          00000025  008001e0  008001e0  00000d76  2**0
                   ALLOC
   3 .comment      00000030  00000000  00000000  00000d76  2**0
                   CONTENTS, READONLY
@@ -146,7 +146,7 @@ Disassembly of section .text:
   cc:	1d 92       	st	X+, r1
 
 000000ce <.do_clear_bss_start>:
-  ce:	aa 30       	cpi	r26, 0x0A	; 10
+  ce:	a5 30       	cpi	r26, 0x05	; 5
   d0:	b2 07       	cpc	r27, r18
   d2:	e1 f7       	brne	.-8      	; 0xcc <.do_clear_bss_loop>
   d4:	e6 d3       	rcall	.+1996   	; 0x8a2 <main>
@@ -357,16 +357,16 @@ void LCD_DisplayString( unsigned char column, const unsigned char* string) {
  188:	08 95       	ret
 
 0000018a <TimerSet>:
- 18a:	60 93 00 01 	sts	0x0100, r22	; 0x800100 <__data_start>
+ 18a:	60 93 00 01 	sts	0x0100, r22	; 0x800100 <__DATA_REGION_ORIGIN__>
 	set_PWM(0);
 }
 
 void PWM_off() {
 	TCCR3A = 0x00;
 	TCCR3B = 0x00;
- 18e:	70 93 01 01 	sts	0x0101, r23	; 0x800101 <__data_start+0x1>
- 192:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__data_start+0x2>
- 196:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <__data_start+0x3>
+ 18e:	70 93 01 01 	sts	0x0101, r23	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 192:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 196:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
  19a:	60 93 f3 01 	sts	0x01F3, r22	; 0x8001f3 <_avr_timer_cntcurr>
  19e:	70 93 f4 01 	sts	0x01F4, r23	; 0x8001f4 <_avr_timer_cntcurr+0x1>
  1a2:	80 93 f5 01 	sts	0x01F5, r24	; 0x8001f5 <_avr_timer_cntcurr+0x2>
@@ -384,10 +384,10 @@ void PWM_off() {
  1c0:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7e006f>
  1c4:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7e0085>
  1c8:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7e0084>
- 1cc:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
- 1d0:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_start+0x1>
- 1d4:	a0 91 02 01 	lds	r26, 0x0102	; 0x800102 <__data_start+0x2>
- 1d8:	b0 91 03 01 	lds	r27, 0x0103	; 0x800103 <__data_start+0x3>
+ 1cc:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1d0:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1d4:	a0 91 02 01 	lds	r26, 0x0102	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 1d8:	b0 91 03 01 	lds	r27, 0x0103	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
  1dc:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <_avr_timer_cntcurr>
  1e0:	90 93 f4 01 	sts	0x01F4, r25	; 0x8001f4 <_avr_timer_cntcurr+0x1>
  1e4:	a0 93 f5 01 	sts	0x01F5, r26	; 0x8001f5 <_avr_timer_cntcurr+0x2>
@@ -424,10 +424,10 @@ void PWM_off() {
  232:	99 f4       	brne	.+38     	; 0x25a <__vector_13+0x66>
  234:	81 e0       	ldi	r24, 0x01	; 1
  236:	80 93 f7 01 	sts	0x01F7, r24	; 0x8001f7 <TimerFlag>
- 23a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
- 23e:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_start+0x1>
- 242:	a0 91 02 01 	lds	r26, 0x0102	; 0x800102 <__data_start+0x2>
- 246:	b0 91 03 01 	lds	r27, 0x0103	; 0x800103 <__data_start+0x3>
+ 23a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 23e:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 242:	a0 91 02 01 	lds	r26, 0x0102	; 0x800102 <__DATA_REGION_ORIGIN__+0x2>
+ 246:	b0 91 03 01 	lds	r27, 0x0103	; 0x800103 <__DATA_REGION_ORIGIN__+0x3>
  24a:	80 93 f3 01 	sts	0x01F3, r24	; 0x8001f3 <_avr_timer_cntcurr>
  24e:	90 93 f4 01 	sts	0x01F4, r25	; 0x8001f4 <_avr_timer_cntcurr+0x1>
  252:	a0 93 f5 01 	sts	0x01F5, r26	; 0x8001f5 <_avr_timer_cntcurr+0x2>
@@ -1036,7 +1036,7 @@ void GAME_TICK()
 			
 			else if(Check_nextposition < MAX_ROUNDS) {
  65a:	80 91 e5 01 	lds	r24, 0x01E5	; 0x8001e5 <Check_nextposition>
- 65e:	89 30       	cpi	r24, 0x09	; 9
+ 65e:	84 30       	cpi	r24, 0x04	; 4
 				Check_nextposition = 0;
  660:	30 f4       	brcc	.+12     	; 0x66e <GAME_TICK+0x16a>
 				game_state = Add_LED;
@@ -1251,7 +1251,7 @@ void GAME_TICK()
  7bc:	15 b8       	out	0x05, r1	; 5
 			if(Make_nextposition < MAX_ROUNDS) {
  7be:	c0 91 e8 01 	lds	r28, 0x01E8	; 0x8001e8 <Make_nextposition>
- 7c2:	c9 30       	cpi	r28, 0x09	; 9
+ 7c2:	c4 30       	cpi	r28, 0x04	; 4
 				Pattern[Make_nextposition] = getRandomLed();
  7c4:	88 f4       	brcc	.+34     	; 0x7e8 <GAME_TICK+0x2e4>
  7c6:	69 dd       	rcall	.-1326   	; 0x29a <getRandomLed>
@@ -1423,7 +1423,7 @@ void Initialize(uint8_t seed)
  8ba:	80 93 fb 01 	sts	0x01FB, r24	; 0x8001fb <state>
  8be:	68 ec       	ldi	r22, 0xC8	; 200
 	
-	// Set the seed for the PNR.
+	// Set the seed
 	Initialize(1);				// Use a set seed so it could repeat
 	
 	TimerSet(200);
